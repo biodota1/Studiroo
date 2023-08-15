@@ -23,6 +23,9 @@ export default function Settings() {
       }`}
     >
       <Navbar />
+      <div className="h-32 flex justify-center items-center">
+        <h1 className="text-5xl font-bold">SETTINGS</h1>
+      </div>
       <div className="p-5">
         <div className="space-y-5">
           <h1 className="text-2xl font-semibold">General Settings</h1>

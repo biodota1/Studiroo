@@ -62,16 +62,19 @@ export default function Navbar() {
           />
         )}
 
-        <div className={`absolute mt-11  p-2 overflow-hidden `}>
+        <div className={`absolute z-50 mt-11  p-2 overflow-hidden `}>
           <div
             className="text-xl font-semibold  bg-white p-3 shadow"
             style={{
-              transform: showMenu ? "translateY(0px) " : "translateY(-150px)",
+              transform: showMenu ? "translateY(0px) " : "translateY(-200px)",
               transition: "transform 0.5s ease-in-out",
             }}
           >
             <div className="hover:underline cursor-pointer">
               <Link to="/Studiroo/">Home</Link>
+            </div>
+            <div className="hover:underline cursor-pointer">
+              <Link to="/Studiroo/profile">Profile</Link>
             </div>
             <div className="hover:underline cursor-pointer">
               <Link to="/Studiroo/schedule">Schedule</Link>
