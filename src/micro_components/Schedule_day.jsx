@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faX } from "@fortawesome/free-solid-svg-icons";
 
 export default function Schedule_day(props) {
   const [divCount, setDivCount] = useState(0);
@@ -54,7 +54,12 @@ export default function Schedule_day(props) {
       }
       setIsValue(false);
     };
-    return { handleAdd, handleAdded, isValue };
+
+    const handleClose = () => {
+      setIsValue(false);
+    };
+
+    return { handleAdd, handleAdded, handleClose, isValue };
   };
 
   const mondayAdd = handleAdd(useState, false);
@@ -96,7 +101,7 @@ export default function Schedule_day(props) {
             }}
           />
           <div>
-            start{" "}
+            start
             <input
               className="shadow border-2 px-2 w-16"
               type="text"
@@ -135,6 +140,12 @@ export default function Schedule_day(props) {
           ADD
         </button>
       </div>
+      <button
+        className="absolute -top-2 right-2 hover:cursor-pointer"
+        onClick={mondayAdd.handleClose}
+      >
+        <FontAwesomeIcon icon={faX} />
+      </button>
     </div>
   );
 
