@@ -53,7 +53,7 @@ export default function Homepage() {
       </div>
       <div className="h-[30vh]  flex flex-col items-center justify-center">
         <h1 className="text-5xl font-bold p-5">WELCOME</h1>
-        <Link to="schedule">
+        <Link to="/Studiroo/schedule">
           <button
             className={`text-2xl w-52 p-2 rounded-xl shadow-lg border-2 ${schedTheme}`}
           >

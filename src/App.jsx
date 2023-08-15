@@ -6,11 +6,11 @@ import Settings from "./components/Settings";
 import About from "./components/About";
 
 const router = createBrowserRouter([
-  { path: "/about", Component: About },
-  { path: "/settings", Component: Settings },
-  { path: "/schedule", Component: Schedule },
-  { path: "/", Component: Homepage },
-  { path: "*", Component: Root },
+  { path: "/Studiroo/about", Component: About },
+  { path: "/Studiroo/settings", Component: Settings },
+  { path: "/Studiroo/schedule", Component: Schedule },
+  { path: "/Studiroo/", Component: Homepage },
+  { path: "/Studiroo/", Component: Root },
 ]);
 
 export default function App() {

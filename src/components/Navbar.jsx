@@ -38,7 +38,7 @@ export default function Navbar() {
   });
   return (
     <div className={`relative flex h-16 space-x-4 pl-4 ${navTheme}`}>
-      <Link to="/" className="h-full flex justify-center items-center">
+      <Link to="/Studiroo/" className="h-full flex justify-center items-center">
         <FontAwesomeIcon
           icon={faHouse}
           className="h-1/2 my-auto hover:cursor-pointer"
@@ -71,16 +71,16 @@ export default function Navbar() {
             }}
           >
             <div className="hover:underline cursor-pointer">
-              <Link to="/">Home</Link>
+              <Link to="/Studiroo/">Home</Link>
             </div>
             <div className="hover:underline cursor-pointer">
-              <Link to="/schedule">Schedule</Link>
+              <Link to="/Studiroo/schedule">Schedule</Link>
             </div>
             <div className="hover:underline cursor-pointer">
-              <Link to="/settings">Settings</Link>
+              <Link to="/Studiroo/settings">Settings</Link>
             </div>
             <div className="hover:underline cursor-pointer">
-              <Link to="/about">About</Link>
+              <Link to="/Studiroo/about">About</Link>
             </div>
           </div>
         </div>
