@@ -1,27 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faX } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faX, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Schedule_day(props) {
-  const [divCount, setDivCount] = useState(0);
+  const [divCount, setDivCount] = useState(1);
   const [divElements, setDivElements] = useState([]);
   const [subName, setSubName] = useState("");
   const [subTimeStart, setSubTimeStart] = useState("");
   const [subTimeEnd, setSubTimeEnd] = useState("");
   const [subRoom, setSubRoom] = useState("");
   const [schedTheme, setSchedTheme] = useState("");
+  const { weekDay } = props;
 
-  const subjectSched = (
-    <div className="flex h-16 font-semibold">
-      <div className="w-1/3 m-auto text-center">{subName}</div>
-      <div className="w-1/3 m-auto text-center">
-        {subTimeStart}-{subTimeEnd}
-      </div>
-      <div className="w-1/3 m-auto text-center">{subRoom}</div>
-    </div>
-  );
-
+  // ADD SUBJECT DIV
   const handleAddDiv = () => {
     setDivCount(divCount + 1);
     setDivElements([
@@ -30,8 +22,37 @@ export default function Schedule_day(props) {
         {subjectSched}
       </div>,
     ]);
+    console.log(divCount);
   };
 
+  // DELETE SUBJECT DIV
+  const handleDeleteDiv = (index) => {
+    const updatedDivs = [...divElements];
+    updatedDivs.splice(index, 1);
+    setDivElements(updatedDivs);
+  };
+
+  // SUBJECT DIV
+  const subjectSched = (
+    <div className="flex h-16 font-semibold">
+      <div className="w-1/3 m-auto text-center">{subName}</div>
+      <div className="w-1/3 m-auto text-center">
+        {subTimeStart}-{subTimeEnd}
+      </div>
+      <div className="w-1/3 m-auto text-center">{subRoom}</div>
+      <div
+        className="flex items-center hover:cursor-pointer"
+        onClick={() => {
+          handleDeleteDiv(divCount);
+          console.log("click");
+        }}
+      >
+        <FontAwesomeIcon icon={faTrash} />
+      </div>
+    </div>
+  );
+
+  // ADD FUNCTION
   const handleAdd = (useStateHook, initialValue) => {
     const [isValue, setIsValue] = useStateHook(initialValue);
     const handleAdd = () => {
@@ -63,8 +84,8 @@ export default function Schedule_day(props) {
   };
 
   const mondayAdd = handleAdd(useState, false);
-  const { weekDay } = props;
 
+  // ADD SUBJECT BUTTON
   const addSubButton = (
     <button
       className={`relative flex h-10 w-36  z-10 shadow rounded-md text-lg font-semibold space-x-2 ${schedTheme}`}
@@ -79,13 +100,14 @@ export default function Schedule_day(props) {
     </button>
   );
 
+  // EDIT SUBJECT TO ADD
   const addSubEdit = (
     <div
       className={`relative z-30 h-42 border-2 shadow-md m-2 p-4 space-y-2 ${
         mondayAdd.isValue ? "" : "hidden"
       }`}
     >
-      <div className="flex w-full">
+      <div className="flex w-full space-x-5">
         <div className="flex flex-col w-1/6 space-y-3 font-semibold">
           <label htmlFor="sub-name">Subject</label>
           <label htmlFor="sub-time">Time</label>
@@ -100,8 +122,8 @@ export default function Schedule_day(props) {
               setSubName(e.target.value);
             }}
           />
-          <div>
-            start
+          <div className="flex space-x-2.5">
+            <p>start</p>
             <input
               className="shadow border-2 px-2 w-16"
               type="text"
@@ -110,7 +132,7 @@ export default function Schedule_day(props) {
                 setSubTimeStart(e.target.value);
               }}
             />
-            end{" "}
+            <p>end</p>
             <input
               className="shadow border-2 px-2 w-16"
               type="text"
