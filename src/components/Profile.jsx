@@ -59,17 +59,25 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div className=" h-1/3 px-10 py-6 space-y-2">
-          <div className="flex space-x-3 text-2xl font-semibold w-full">
-            <label className="pl-2" htmlFor="name">
-              Name :
-            </label>
-            <div className="relative">
-              {editDetails && <p className="absolute">{profileName}</p>}
 
+        {/* PROFILE INFO */}
+        <div className="relative h-1/3 w-full flex justify-center items-center text-2xl font-semibold space-x-5">
+          <div className="absolute top-0 left-[6%] md:left-[30%]">
+            <div className="absolute top-0">Name:</div>
+            <div className="absolute top-20">Course:</div>
+          </div>
+
+          <div className="absolute top-0 left-[25%] md:left-[40%]">
+            {/* EDIT AND SAVE NAME */}
+            <div className="w-[250px]">
+              {editDetails && (
+                <p className="absolute top-0 w-full break-words">
+                  {profileName}
+                </p>
+              )}
               {saveDetails && (
                 <input
-                  className="absolute"
+                  className={`absolute top-0 h-8 w-full px-2 border-2 text-xl rounded ${profBorder}`}
                   type="text"
                   value={profileName}
                   onChange={(e) => {
@@ -78,15 +86,17 @@ export default function Profile() {
                 />
               )}
             </div>
-          </div>
-          <div className="flex space-x-3 text-2xl font-semibold">
-            <label htmlFor="name">Course :</label>
-            <div className="relative">
-              {editDetails && <p className="absolute">{profileCourse}</p>}
+            {/* EDIT AND SAVE COURSE */}
+            <div className="w-[250px] overflow-hidden">
+              {editDetails && (
+                <p className="absolute top-20 w-full break-words">
+                  {profileCourse}
+                </p>
+              )}
 
               {saveDetails && (
                 <input
-                  className="absolute"
+                  className={`absolute top-20 h-8 w-full px-2 border-2 text-xl rounded ${profBorder}`}
                   type="text"
                   value={profileCourse}
                   onChange={(e) => {
@@ -96,34 +106,34 @@ export default function Profile() {
               )}
             </div>
           </div>
-          <div className="relative">
-            {editDetails && (
-              <button
-                className={`absolute text-xl font-semibold w-full p-2 rounded-xl shadow-lg border-2 ${schedTheme}`}
-                onClick={() => {
-                  setSaveDetails(!saveDetails);
-                  setEditDetails(!editDetails);
-                }}
-              >
-                Edit details
-              </button>
-            )}
-            {saveDetails && (
-              <button
-                className={`absolute text-xl font-semibold w-full p-2 rounded-xl shadow-lg border-2 ${schedTheme}`}
-                onClick={() => {
-                  const storeName = profileName;
-                  const storeCourse = profileCourse;
-                  localStorage.setItem("profileName", storeName);
-                  localStorage.setItem("profileCourse", storeCourse);
-                  setSaveDetails(!saveDetails);
-                  setEditDetails(!editDetails);
-                }}
-              >
-                Save details
-              </button>
-            )}
-          </div>
+        </div>
+        <div className="relative">
+          {editDetails && (
+            <button
+              className={`absolute text-xl font-semibold w-full p-2 rounded-xl shadow-lg border-2 ${schedTheme}`}
+              onClick={() => {
+                setSaveDetails(!saveDetails);
+                setEditDetails(!editDetails);
+              }}
+            >
+              Edit details
+            </button>
+          )}
+          {saveDetails && (
+            <button
+              className={`absolute text-xl font-semibold w-full p-2 rounded-xl shadow-lg border-2 ${schedTheme}`}
+              onClick={() => {
+                const storeName = profileName;
+                const storeCourse = profileCourse;
+                localStorage.setItem("profileName", storeName);
+                localStorage.setItem("profileCourse", storeCourse);
+                setSaveDetails(!saveDetails);
+                setEditDetails(!editDetails);
+              }}
+            >
+              Save details
+            </button>
+          )}
         </div>
       </div>
     </div>

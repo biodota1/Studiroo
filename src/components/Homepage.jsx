@@ -62,6 +62,8 @@ export default function Homepage() {
   return (
     <div className={bgColor}>
       <Navbar />
+
+      {/* IS PROFILE SET */}
       {isProfile && (
         <div className="h-[60vh] p-4">
           <div className=" h-2/3 flex justify-center items-center  ">
@@ -73,18 +75,20 @@ export default function Homepage() {
               />
             </div>
           </div>
-          <div className=" h-1/3 px-10 py-6">
-            <div className="flex space-x-3 text-2xl font-semibold w-full">
-              <label htmlFor="name">Name :</label>
-              <p>{profileName}</p>
+          <div className="h-1/3 w-full flex justify-center items-center text-2xl font-semibold space-x-5">
+            <div className="space-y-2">
+              <div>Name:</div>
+              <div>Course:</div>
             </div>
-            <div className="flex space-x-3 text-2xl font-semibold">
-              <label htmlFor="name">Course :</label>
-              <p>{profileCourse}</p>
+            <div className="space-y-2">
+              <div>{profileName}</div>
+              <div>{profileCourse}</div>
             </div>
           </div>
         </div>
       )}
+
+      {/* IF PROFILE IS NOT SET */}
       {isCreateProfile && (
         <div className="h-[60vh] flex justify-center items-center">
           <button
@@ -96,6 +100,7 @@ export default function Homepage() {
         </div>
       )}
 
+      {/* LINK TO SET SCHEDULE */}
       <div className="h-[40vh]  flex flex-col items-center justify-center">
         <h1 className="text-5xl font-bold p-5">WELCOME</h1>
         <Link to="/Studiroo/schedule">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleDown } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +9,7 @@ export default function Settings() {
   const [chooseToggle, setChooseToggle] = useState(true);
   const [modeToggle, setModeToggle] = useState(false);
   const [darkMode, setDarkMode] = useState("");
+  const navigate = useNavigate();
 
   const handleDarkMode = () => {
     setModeToggle(!modeToggle);
@@ -66,8 +68,7 @@ export default function Settings() {
                 onClick={() => {
                   const themeData = "citu";
                   localStorage.setItem("navTheme", themeData);
-                  window.location.reload();
-                  console.log(themeData);
+                  navigate("/Studiroo/");
                 }}
               >
                 Cebu Institue of Techology-Univery
@@ -77,7 +78,7 @@ export default function Settings() {
                 onClick={() => {
                   const themeData = "uc";
                   localStorage.setItem("navTheme", themeData);
-                  window.location.reload();
+                  navigate("/Studiroo/");
                 }}
               >
                 University of Cebu
@@ -87,7 +88,7 @@ export default function Settings() {
                 onClick={() => {
                   const themeData = "swu";
                   localStorage.setItem("navTheme", themeData);
-                  window.location.reload();
+                  navigate("/Studiroo/");
                 }}
               >
                 South Western University
