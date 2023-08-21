@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function GettingStarted() {
   const navigate = useNavigate();
@@ -19,13 +19,18 @@ export default function GettingStarted() {
         <p className="relative text-xl font-semibold">
           Easy-to-look schedule for you
         </p>
-        <div className="relative flex justify-center p-16">
+        <div className="relative flex flex-col justify-center p-16 space-y-2">
           <button
-            className="bg-amber-400 w-full h-12 rounded-full text-xl font-semibold"
+            className="btn bg-amber-400 w-full h-12 rounded-full text-xl font-semibold"
             onClick={navToSetup}
           >
             Get Started
           </button>
+          <div className="text-center">
+            <Link to="/Studiroo/profile" className="hover:text-blue-500">
+              Already have an account?
+            </Link>
+          </div>
         </div>
       </section>
     </main>
